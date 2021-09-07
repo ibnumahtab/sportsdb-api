@@ -15,6 +15,7 @@ document.getElementById('search-btn').addEventListener('click', async () => {
     searchField.value = '';
 });
 
+// Display all data in Cards Grid
 const displayData = teams => {
     const cardsContainer = document.getElementById('cards-container');
     cardsContainer.textContent = '';
@@ -22,7 +23,7 @@ const displayData = teams => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-            <div onclick="singleCard()" class="card">
+            <div onclick="singleCard(${team.idTeam})" class="card">
                 <img src="${team.strStadiumThumb ? team.strStadiumThumb : `https://www.thesportsdb.com/images/media/team/stadium/qwiwct1612115458.jpg`}" class="card-img-top" alt="${team.strAlternate}">
                 <div class="card-body">
                     <h5 class="card-title">${team.strAlternate ? team.strAlternate : `Not Found`}</h5>
@@ -40,9 +41,38 @@ const displayData = teams => {
     });
 };
 
-const singleCard = () => {
-    console.log('ok');
-}
+// Fetching Data for Single Card Show
+const singleCard = async id => {
+    const url = `https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    singleCardDisplay(data.teams[0]);
+};
+
+// Display the Data after Click
+const displayContainer = document.getElementById('display-container');
+const singleCardDisplay = team => {
+    console.log(team);
+    displayContainer.textContent = '';
+    const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML = `
+            <div onclick="singleCard(${team.idLeague})" class="card">
+                <img src="${team.strStadiumThumb ? team.strStadiumThumb : `https://www.thesportsdb.com/images/media/team/stadium/qwiwct1612115458.jpg`}" class="card-img-top" alt="${team.strAlternate}">
+                <div class="card-body">
+                    <h5 class="card-title">${team.strAlternate ? team.strAlternate : `Not Found`}</h5>
+                    <p class="card-text">${team.strStadiumDescription ? team.strStadiumDescription.slice(0, 150) : `Not Found`}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="${team.strWebsite ? team.strWebsite : `https://www.facebook.com/ibnumahtab`}"><i class="bi bi-globe2"></i></a>
+                    &nbsp;
+                    <a href="${team.strFacebook ? team.strFacebook : `https://www.facebook.com/ibnumahtab`}"><i class="bi bi-facebook"></i></a>
+                    &nbsp;
+                </div>
+            </div>
+        `;
+        displayContainer.appendChild(div);
+};
 
 
 /* 
