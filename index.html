@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports DB API</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Bootstrap Icon CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <h1 class="text-center display-3 text-success py-3">SportsDB API</h1>
+    <main>
+        <div class="container">
+            <!-- Search Input and Button -->
+            <div class="input-group mb-5 w-75 mx-auto">
+                <input id="search-field" type="text" class="form-control" placeholder="Write Your Sports Team Name">
+                <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
+            </div>
+
+            <!-- Display Clicked Data -->
+            <div id="display-container" class="row row-cols-1 g-4"></div>
+            <!-- Display All Loaded Data -->
+            <div id="cards-container" class="row row-cols-1 row-cols-md-2 g-4"></div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+    <script src="./js/sportsdb-api.js"></script>
+</body>
+
+</html>
